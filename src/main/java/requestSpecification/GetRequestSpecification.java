@@ -3,6 +3,8 @@ package requestSpecification;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.config.RestAssuredConfig;
 import io.restassured.config.SSLConfig;
+import io.restassured.filter.log.LogDetail;
+import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
@@ -21,6 +23,8 @@ public class GetRequestSpecification {
                 .setContentType(ContentType.JSON)
                 .setBaseUri(BASE_URI.getUrl())
                 .setBasePath(BASE_PATH.getUrl())
+                .log(LogDetail.ALL)
+                .addFilter(new ResponseLoggingFilter())
                 .build();
     }
 }
