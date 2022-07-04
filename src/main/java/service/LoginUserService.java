@@ -18,7 +18,7 @@ public class LoginUserService extends BaseTest {
              when().
                      post(LOGIN_USUARIO.getUrl()).
              then().
-                     statusCode(HttpStatus.SC_UNAUTHORIZED).
+                     statusCode(HttpStatus.SC_OK).
                      contentType(ContentType.JSON);
     }
 
