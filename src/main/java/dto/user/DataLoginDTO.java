@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DataDTO {
+public class DataLoginDTO {
 
     private String token;
 }

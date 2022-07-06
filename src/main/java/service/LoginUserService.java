@@ -1,6 +1,7 @@
 package service;
 
 import common.BaseTest;
+import dto.user.UserLoginRequestDTO;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import org.apache.http.HttpStatus;
@@ -10,7 +11,7 @@ import static io.restassured.RestAssured.given;
 
 public class LoginUserService extends BaseTest {
 
-    public ValidatableResponse loginSuccess(String body){
+    public ValidatableResponse loginSuccess(UserLoginRequestDTO body){
         return
              given().
                     spec(requestSpecification).
@@ -22,7 +23,7 @@ public class LoginUserService extends BaseTest {
                      contentType(ContentType.JSON);
     }
 
-    public ValidatableResponse loginInvalido(String body){
+    public ValidatableResponse loginInvalido(UserLoginRequestDTO body){
         return
              given().
                     spec(requestSpecification).
@@ -33,4 +34,5 @@ public class LoginUserService extends BaseTest {
                     statusCode(HttpStatus.SC_UNAUTHORIZED).
                         contentType(ContentType.JSON);
     }
+
 }

@@ -1,5 +1,6 @@
 package dto.user;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
@@ -10,8 +11,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserLoginRespondeDTO {
-   private DataLoginDTO data;
-   private String message;
-   private String error;
+public class UserCreateResponseDTO {
+    private DataUserCreatedDTO data;
+    private String message;
+    private String error;
 }
