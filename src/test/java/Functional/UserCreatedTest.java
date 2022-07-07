@@ -41,5 +41,18 @@ public class UserCreatedTest extends BaseTest {
 
     }
 
+    @Test(dataProviderClass = UserCreatedProvider.class, dataProvider = "requiredFields")
+    public void requiredFields(UserCreatedRequestDTO request){
+        userCreatedService = new UserCreatedService();
+
+        UserCreatedResponseAlreadyDTO response = userCreatedService.requiredFields()
+                .extract()
+                .jsonPath()
+                .getObject("$",UserCreatedResponseAlreadyDTO.class);
+
+        Assert.assertEquals(response.getError(),"usuarioNome, usuarioLogin e usuarioSenha são atributos obrigatórios");
+
+    }
+
 
 }

@@ -31,4 +31,14 @@ public class UserCreatedService extends BaseTest {
                     statusCode(HttpStatus.SC_CONFLICT).
                     contentType(ContentType.JSON);
     }
+
+    public ValidatableResponse requiredFields(){
+        return given().
+                spec(requestSpecification).
+                when().
+                post(CRIAR_USUARIO.getUrl()).
+                then().
+                statusCode(HttpStatus.SC_BAD_REQUEST).
+                contentType(ContentType.JSON);
+    }
 }

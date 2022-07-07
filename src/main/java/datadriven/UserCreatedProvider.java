@@ -30,4 +30,11 @@ public class UserCreatedProvider {
 
         return new Object[]{user};
     }
+
+    @DataProvider(name = "requiredFields")
+    public Object[] requiredFields(){
+        UserCreatedRequestDTO user = UserCreatedRequestDTO.builder().build();
+
+        return new Object[]{user};
+    }
 }
