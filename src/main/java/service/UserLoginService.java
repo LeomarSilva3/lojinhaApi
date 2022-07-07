@@ -9,7 +9,7 @@ import org.apache.http.HttpStatus;
 import static enums.Enums.*;
 import static io.restassured.RestAssured.given;
 
-public class LoginUserService extends BaseTest {
+public class UserLoginService extends BaseTest {
 
     public ValidatableResponse loginSuccess(UserLoginRequestDTO body){
         return

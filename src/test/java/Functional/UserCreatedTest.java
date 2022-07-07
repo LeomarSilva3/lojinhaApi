@@ -13,27 +13,26 @@ import java.util.Random;
 
 
 public class UserCreatedTest extends BaseTest {
-    private UserCreatedService postCreated;
+    private UserCreatedService userCreatedService;
 
     @Test(dataProviderClass = UserCreatedProvider.class, dataProvider = "userCreated")
     public void userCreated(UserCreatedRequestDTO request){
-        postCreated = new UserCreatedService();
+        userCreatedService = new UserCreatedService();
 
-        UserCreateResponseDTO response = postCreated.userCreated(request)
+        UserCreateResponseDTO response = userCreatedService.userCreated(request)
                 .extract()
                 .jsonPath()
                 .getObject("$",UserCreateResponseDTO.class);
 
         Assert.assertEquals(response.getMessage(),"Usuário adicionado com sucesso");
 
-
     }
 
     @Test(dataProviderClass = UserCreatedProvider.class, dataProvider = "userAlreadyExists")
     public void userAlreadyExists(UserCreatedRequestDTO request){
-        postCreated = new UserCreatedService();
+        userCreatedService = new UserCreatedService();
 
-        UserCreatedResponseAlreadyDTO response = postCreated.userAlreadyExists(request)
+        UserCreatedResponseAlreadyDTO response = userCreatedService.userAlreadyExists(request)
                 .extract()
                 .jsonPath()
                 .getObject("$",UserCreatedResponseAlreadyDTO.class);

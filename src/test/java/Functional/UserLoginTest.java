@@ -7,20 +7,17 @@ import dto.user.UserLoginRespondeDTO;
 import io.restassured.response.ValidatableResponse;
 import org.junit.Assert;
 import org.testng.annotations.Test;
-import service.LoginUserService;
-
-import java.util.Random;
+import service.UserLoginService;
 
 
-public class LoginTest  extends BaseTest {
-private LoginUserService postLogin;
+public class UserLoginTest extends BaseTest {
+private UserLoginService userLoginService;
 
     @Test(dataProviderClass = LoginUserProvider.class, dataProvider = "loginSuccess")
     public void LoginComSucesso(UserLoginRequestDTO request){
-        postLogin = new LoginUserService();
+        userLoginService = new UserLoginService();
 
-
-        UserLoginRespondeDTO response = postLogin.loginSuccess(request)
+        UserLoginRespondeDTO response = userLoginService.loginSuccess(request)
                 .extract()
                 .jsonPath()
                 .getObject("$",UserLoginRespondeDTO.class);
@@ -31,9 +28,9 @@ private LoginUserService postLogin;
 
     @Test(dataProviderClass = LoginUserProvider.class, dataProvider = "loginInvalidoSenhaValida")
     public void LoginInvalidoSenhaValida(UserLoginRequestDTO request){
-        postLogin = new LoginUserService();
+        userLoginService = new UserLoginService();
 
-        ValidatableResponse response = postLogin.loginInvalido(request);
+        ValidatableResponse response = userLoginService.loginInvalido(request);
 
         response.statusCode(401);
 
@@ -41,9 +38,9 @@ private LoginUserService postLogin;
 
     @Test(dataProviderClass = LoginUserProvider.class, dataProvider = "loginValidoSenhaInvalida")
     public void LoginValidoSenhaInvalida(UserLoginRequestDTO request){
-        postLogin = new LoginUserService();
+        userLoginService = new UserLoginService();
 
-        ValidatableResponse response = postLogin.loginInvalido(request);
+        ValidatableResponse response = userLoginService.loginInvalido(request);
 
         response.statusCode(401);
 
@@ -51,9 +48,9 @@ private LoginUserService postLogin;
 
     @Test(dataProviderClass = LoginUserProvider.class, dataProvider = "loginSenhaNull")
     public void LoginSenhaNull(UserLoginRequestDTO request){
-        postLogin = new LoginUserService();
+        userLoginService = new UserLoginService();
 
-        ValidatableResponse response = postLogin.loginInvalido(request);
+        ValidatableResponse response = userLoginService.loginInvalido(request);
 
         response.statusCode(401);
 
