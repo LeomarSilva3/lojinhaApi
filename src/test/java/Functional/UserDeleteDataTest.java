@@ -16,4 +16,13 @@ public class UserDeleteDataTest extends BaseTest {
 
         response.statusCode(204);
     }
+
+    @Test()
+    public void deleteDataUserWithoutToken(){
+        userDeleteDataService = new UserDeleteDataService();
+
+        ValidatableResponse response = userDeleteDataService.deleteDataUserWithoutToken();
+
+        response.statusCode(401);
+    }
 }

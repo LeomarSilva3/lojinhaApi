@@ -23,7 +23,17 @@ public class UserDeleteDataService extends BaseTest {
                 then().
                     statusCode(HttpStatus.SC_NO_CONTENT);
 
+   }
 
+    public ValidatableResponse deleteDataUserWithoutToken(){
 
-        }
+        return
+            given().
+                spec(requestSpecification).
+            when().
+                delete(DELETAR_DADOS_USUARIO.getUrl()).
+            then().
+                statusCode(HttpStatus.SC_UNAUTHORIZED);
+
+    }
 }
