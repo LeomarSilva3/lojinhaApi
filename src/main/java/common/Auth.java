@@ -2,16 +2,15 @@ package common;
 
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
-
 import static enums.Enums.LOGIN_USUARIO;
 import static io.restassured.RestAssured.given;
 
 public class Auth extends BaseTest{
-    public String autenticacao(){
-        String token = "";
+    String token = "";
 
-        String body = "{\"usuarioLogin\": \"admin\",\n" +
-                " \"usuarioSenha\": \"admin\"}";
+    public String autenticacao(){
+        String body = "{\"usuarioLogin\": \"usuarioCriado\",\n" +
+                " \"usuarioSenha\": \"123456\"}";
 
         token =  given().
                 spec(requestSpecification).
